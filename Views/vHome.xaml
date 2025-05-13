@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="squispe5A.Views.vHome"
+             Title="vHome">
+
+    <!-- Habilita scroll vertical -->
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <Label Text="Semana 5 SQLite!"
+                   FontSize="20"
+                   HorizontalOptions="Center" />
+
+            <Entry x:Name="txtId"
+                   Placeholder="ID (auto)"
+                   IsReadOnly="True"
+                   Keyboard="Numeric" />
+
+            <Entry x:Name="txtNombre"
+                   Placeholder="Ingrese el nombre" />
+
+            <Entry x:Name="txtApellido"
+                   Placeholder="Ingrese el Apellido" />
+
+            <Grid RowSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Button Text="Insertar"
+                        Grid.Row="0"
+                        Clicked="btnInsertar_Clicked" />
+                <Button Text="Actualizar"
+                        Grid.Row="1"
+                        Clicked="btnActualizar_Clicked" />
+                <Button Text="Eliminar"
+                        Grid.Row="2"
+                        Clicked="btnEliminar_Clicked" />
+                <Button Text="Listar personas"
+                        Grid.Row="3"
+                        Clicked="btnListar_Clicked" />
+                <Button Text="Eliminar todo"
+                        Clicked="btnEliminarTodo_Clicked_1"
+                        Grid.Row="4"/>
+            </Grid>
+
+            <Label x:Name="statusMessage"
+                   FontSize="16"
+                   TextColor="Blue" />
+
+            <CollectionView x:Name="listarPersona"
+                            HeightRequest="300"
+                            SelectionMode="Single"
+                            SelectionChanged="listarPersona_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Id}" Grid.Column="0" />
+                            <Label Text="{Binding Name}" Grid.Column="1" />
+                            <Label Text="{Binding LastName}" Grid.Column="2" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
